@@ -9,6 +9,9 @@
 body {
     @apply m-0 h-screen w-screen bg-bgDark flex-center;
 }
+*, ::before, ::after {
+    @apply !box-border ;
+}
 
 .txt {
     @apply text-white ;
@@ -28,4 +31,8 @@ body {
 
 .green-pink-gradient {
     @apply bg-gradient-to-b from-twGreen to-twPink;
+}
+
+.box-content {
+    @apply w-[100vw] h-[350px]  sm:w-[350px] sm:rounded-md  bg-bgDark p-4; 
 }
