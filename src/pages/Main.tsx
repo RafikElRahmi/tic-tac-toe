@@ -1,9 +1,7 @@
+import { LinearBox } from "../components";
 
-
-interface MainProps {
-
-}
-const MainPage = ({ }: MainProps) => {
+interface MainProps {}
+const MainPage = ({}: MainProps) => {
     /** todo
      * Manage the entire page's logic efficiently.
      * Define the UI in modular, reusable components.
@@ -11,7 +9,11 @@ const MainPage = ({ }: MainProps) => {
      * Optimize for performance (consider caching, minimizing iterations, etc.).
      * Ensure mobile and desktop responsiveness.
      */
-    return <div className="txt">init project</div>;
+    return (
+        <div className="txt">
+            <LinearBox>init project</LinearBox>
+        </div>
+    );
 };
 
 export default MainPage;

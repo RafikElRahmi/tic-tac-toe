@@ -1,0 +1,1 @@
+export { btnVariant } from "../components/shared/button"

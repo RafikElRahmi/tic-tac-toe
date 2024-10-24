@@ -13,3 +13,19 @@ body {
 .txt {
     @apply text-white ;
 }
+
+.btn {
+    @apply min-w-[150px] px-2 py-[6px] font-semibold border-2 rounded-lg;
+}
+
+.btn-primary {
+    @apply btn text-white bg-primary border-primary hover:opacity-90;
+}
+
+.btn-secondary {
+    @apply btn text-white bg-secondary border-secondary hover:opacity-90;
+}
+
+.green-pink-gradient {
+    @apply bg-gradient-to-b from-twGreen to-twPink;
+}
