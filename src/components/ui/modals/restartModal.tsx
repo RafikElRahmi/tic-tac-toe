@@ -1,25 +1,53 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Button, Modal } from "../../shared";
+import { useGlobalState } from "../../../context";
 
-const RestartModal = () => {
-    const [open, _setOpen] = useState<boolean>(true);
-    /**TODO
-     * handle modal based on game state
-     * keep track on wins
-     * handle reset on leave
-     * handle who is the winner or its draw
-     * appear on draw
-     */
-    const handleClick = () => {
-        console.log("something");
+interface RestartModalProps {
+    pause?: boolean;
+    setPause?: Dispatch<SetStateAction<boolean>>
+}
+const RestartModal = ({ pause, setPause }: RestartModalProps) => {
+    const [open, setOpen] = useState<boolean>(false);
+    const { result, resetCases, ResetGame } = useGlobalState();
+    useEffect(() => {
+        if (result) {
+            setOpen(true);
+        }
+    }, [result]);
+    const handleClick = (controller: boolean) => {
+        if (pause) {
+            setPause?.(false);
+        }
+        setOpen(false);
+        if (controller) {
+            ResetGame();
+        } else {
+            resetCases();
+        }
     };
+
+    const handleContinue = () => {
+        setOpen(false);
+        setPause?.(false);
+    };
+    useEffect(() => {
+        if (pause) {
+            setOpen(true);
+        }
+    }, [pause]);
+
     return (
-        <Modal isOpen={open} title="winner is palyer1">
+        <Modal isOpen={open} title={result as string}>
             <div className="flex-center gap-3 p-3 flex-col w-[80vw] sm:!w-[250px]">
-                <Button onClick={() => handleClick()} className="w-full">
+                {pause && (
+                    <Button onClick={handleContinue} className="w-full">
+                        Continue
+                    </Button>
+                )}
+                <Button onClick={() => handleClick(false)} className="w-full">
                     Restart
                 </Button>
-                <Button onClick={() => handleClick()} className="w-full">
+                <Button onClick={() => handleClick(true)} className="w-full">
                     Menu
                 </Button>
             </div>

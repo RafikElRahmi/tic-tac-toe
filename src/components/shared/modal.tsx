@@ -35,7 +35,7 @@ const Modal: React.FC<ModalProps> = ({
             <LinearBox>
                 <div className="modal-content bg-bgDark rounded-lg shadow-lg p-4 relative w-fit">
                     {title && (
-                        <h2 className="text-xl font-semibold mb-4 text-center text-white">
+                        <h2 className="text-xl font-semibold mb-4 text-center txt">
                             {title}
                         </h2>
                     )}

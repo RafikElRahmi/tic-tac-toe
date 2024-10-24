@@ -34,5 +34,5 @@ body {
 }
 
 .box-content {
-    @apply w-[100vw] h-[350px]  sm:w-[350px] sm:rounded-md  bg-bgDark p-4; 
+    @apply w-[100vw] aspect-square !max-h-[80vh] sm:w-[350px] sm:rounded-md  bg-bgDark p-4; 
 }

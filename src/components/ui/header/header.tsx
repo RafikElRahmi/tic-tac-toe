@@ -1,18 +1,16 @@
+import { useGlobalState } from "../../../context";
 
-interface HeaderProps {
-    computer: boolean;
-}
-function Header({ computer }: HeaderProps) {
-    /**TODO
-     * handle wins score
-     */
+interface HeaderProps {}
+function Header({}: HeaderProps) {
+    const { wins, computer } = useGlobalState();
+    if (wins === null) return null;
     return (
         <header className="absolute top-0 left-0  w-full h-[40px] bg-primary flex items-center justify-between px-2 sm:px-4">
-            <div className="text-white">Player1</div>
-            <div className="text-white">
-               my score
+            <div className="txt">Player1</div>
+            <div className="txt">
+                {wins.x} - {wins.o}
             </div>
-            <div className="text-white">
+            <div className="txt">
                 {computer ? "Computer" : "Player2"}
             </div>
         </header>

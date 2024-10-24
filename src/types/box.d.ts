@@ -7,3 +7,8 @@ export interface CaseCoords {
 export type CaseItem = [CaseCoords, CaseState];
 
 export type CasesItems = CaseItem[];
+
+export interface Wins {
+    x: number;
+    o: number;
+}

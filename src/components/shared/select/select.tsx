@@ -20,18 +20,15 @@ const Select = ({
     initialValue,
 }: ISelectProps) => {
     // Manage selected value state
-    const [selectedValue, setSelectedValue] =
-        useState<OptionProps["value"]>(initialValue || options[0].value);
+    const [selectedValue, setSelectedValue] = useState<OptionProps["value"]>(
+        initialValue || options[0].value
+    );
 
     // Handle selection change
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const newValue = options.find(
-            (option) => option.value === event.target.value
-        )?.value as OptionProps["value"];
+        const newValue = event.target.value as OptionProps["value"];
         setSelectedValue(newValue);
-        if (onChange) {
-            onChange(newValue);
-        }
+        onChange?.(newValue);
     };
 
     return (
@@ -41,7 +38,11 @@ const Select = ({
             disabled={disabled}
             className={`btn-${variant} h-[40px] ${className || ""}`}>
             {options.map((option) => (
-                <Option key={option.value} value={option.value} label={option.label} />
+                <Option
+                    key={option.value}
+                    value={option.value}
+                    label={option.label}
+                />
             ))}
         </select>
     );

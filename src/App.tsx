@@ -1,13 +1,11 @@
-import { Fragment } from "react/jsx-runtime";
 import { MainPage } from "./pages";
+import { CasesStateProvider } from "./context";
 
 function App() {
     return (
-        <Fragment>
-            <main>
+        <CasesStateProvider>
                 <MainPage />
-            </main>
-        </Fragment>
+        </CasesStateProvider>
     );
 }
 

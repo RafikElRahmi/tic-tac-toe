@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Button, Modal, Select } from "../../shared";
+import { useGlobalState } from "../../../context";
 
 const options = [
     { value: 3, label: "3 x 3" },
@@ -7,22 +7,37 @@ const options = [
     { value: 5, label: "5 x 5" },
 ];
 const StartModal = () => {
-    const [open, _setOpen] = useState<boolean>(true);
-    /**TODO
-     * handle modal based on game state
-     * reset state on appear
-     */
-    const handleClick = () => {
-        console.log("something");
+    const {
+        setRows,
+        setComputer,
+        resetCases,
+        setWins,
+        openModalStart,
+        setOpenModalStart,
+    } = useGlobalState();
+
+    const handleClick = (isComputer: boolean) => {
+        setComputer(isComputer);
+        resetCases();
+        setOpenModalStart(false);
+        setWins({ x: 0, o: 0 });
     };
+
+
+
     return (
-        <Modal isOpen={open} title="Start new game">
+        <Modal isOpen={openModalStart} title="Start new game">
             <div className="flex-center gap-3 p-3 flex-col w-[80vw] sm:!w-[250px]">
-                <Select options={options} initialValue={3} className="w-full" />
-                <Button onClick={() => handleClick()} className="w-full">
+                <Select
+                    options={options}
+                    initialValue={3}
+                    onChange={(v) => setRows(v as number)}
+                    className="w-full"
+                />
+                <Button onClick={() => handleClick(false)} className="w-full">
                     1 vs 1
                 </Button>
-                <Button onClick={() => handleClick()} className="w-full">
+                <Button onClick={() => handleClick(true)} className="w-full">
                     vs computer
                 </Button>
             </div>
