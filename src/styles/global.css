@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flex-center {
+    @apply flex items-center justify-center;
+}
+
+body {
+    @apply m-0 h-screen w-screen bg-bgDark flex-center;
+}
+
+.txt {
+    @apply text-white ;
+}
