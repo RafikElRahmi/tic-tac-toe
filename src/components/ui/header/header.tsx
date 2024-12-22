@@ -1,3 +1,4 @@
+import React from "react";
 import { useGlobalState } from "../../../context";
 
 interface HeaderProps {}
@@ -17,4 +18,4 @@ function Header({}: HeaderProps) {
     );
 }
 
-export default Header;
+export default React.memo(Header);

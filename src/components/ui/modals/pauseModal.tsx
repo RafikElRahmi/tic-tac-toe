@@ -1,11 +1,11 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import RestartModal from "./restartModal";
 import { useGlobalState } from "../../../context";
 
 const PauseModal = () => {
     const { wins } = useGlobalState();
-    if (!wins) return null;
     const [open, setOpen] = useState<boolean>(false);
+    if (!wins) return null;
 
     return (
         <Fragment>
@@ -19,4 +19,4 @@ const PauseModal = () => {
     );
 };
 
-export default PauseModal;
+export default React.memo(PauseModal);

@@ -36,7 +36,7 @@ const checkPlayer = (data: CaseCoords[], rows: number): boolean => {
                 return true;
             }
         }
-        if (element.x === -element.y) {
+        if (element.x === n - 1 - element.y) {
             linearRight += 1;
             if (linearRight === n) {
                 return true;
@@ -73,7 +73,7 @@ export function isDraw(cases: CasesItems): boolean {
 }
 
 export function getRandomCase(cases: CasesItems): CaseCoords {
-    const emptyCases = cases.filter(c => c[1] === "")
-    const randomIndex = Math.floor(Math.random() * emptyCases.length)
-    return emptyCases[randomIndex][0]
+    const emptyCases = cases.filter((c) => c[1] === "");
+    const randomIndex = Math.floor(Math.random() * emptyCases.length);
+    return emptyCases[randomIndex][0];
 }

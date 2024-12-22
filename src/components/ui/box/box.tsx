@@ -1,3 +1,4 @@
+import React, { useMemo } from "react";
 import { useGlobalState } from "../../../context";
 import { CaseCoords } from "../../../types";
 import { LinearBox } from "../../shared";
@@ -5,7 +6,7 @@ import { Case } from "./case";
 
 interface MainBoxProps {}
 
-const MainBox = ({}: MainBoxProps) => {
+const MainBox = React.memo(({}: MainBoxProps) => {
     const { rows, cases, fill, computerRunning } = useGlobalState();
     const handleClick = (c: CaseCoords) => {
         fill(c);
@@ -20,11 +21,15 @@ const MainBox = ({}: MainBoxProps) => {
                     gridTemplateRows: `repeat(${rows}, 1fr)`,
                     gap: "10px",
                 }}>
-                {cases.map((c) => {
+                { cases.map((c) => {
+                    const Memorized = useMemo(
+                        () => c,[c[1]]
+                    );
                     return (
                         <Case
-                            key={JSON.stringify(c[0])}
-                            caseState={c}
+                            key={JSON.stringify(Memorized[0])}
+                            caseStateId={Memorized[0]}
+                            caseStateValue={Memorized[1]}
                             onClick={handleClick}
                             disabled={computerRunning}
                         />
@@ -33,5 +38,5 @@ const MainBox = ({}: MainBoxProps) => {
             </div>
         </LinearBox>
     );
-};
+})
 export default MainBox;

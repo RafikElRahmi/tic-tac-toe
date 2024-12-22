@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Button, Modal } from "../../shared";
 import { useGlobalState } from "../../../context";
 
@@ -55,4 +55,4 @@ const RestartModal = ({ pause, setPause }: RestartModalProps) => {
     );
 };
 
-export default RestartModal;
+export default React.memo(RestartModal);

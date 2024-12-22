@@ -1,5 +1,6 @@
 import { Button, Modal, Select } from "../../shared";
 import { useGlobalState } from "../../../context";
+import React from "react";
 
 const options = [
     { value: 3, label: "3 x 3" },
@@ -45,4 +46,4 @@ const StartModal = () => {
     );
 };
 
-export default StartModal;
+export default React.memo(StartModal);
